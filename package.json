@@ -1,0 +1,31 @@
+{
+  "name": "aspect",
+  "version": "0.0.0",
+  "description": "Aspect Oriented library",
+  "main": "aspect.js",
+  "scripts": {
+    "test": "nodeunit aspectTest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DubFriend/aspectjs.git"
+  },
+  "keywords": [
+    "aspect",
+    "oriented",
+    "javascript",
+    "logging",
+    "profiling"
+  ],
+  "author": "Brian Detering <BDeterin@gmail.com> (http://www.briandetering.net/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DubFriend/aspectjs/issues"
+  },
+  "devDependencies": {
+    "nodeunit": "~0.8.1"
+  },
+  "dependencies": {
+    "underscore": "~1.5.2"
+  }
+}
