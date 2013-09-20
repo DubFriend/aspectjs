@@ -26,6 +26,7 @@
     "nodeunit": "~0.8.1"
   },
   "dependencies": {
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "requirejs": "~2.1.8"
   }
 }
