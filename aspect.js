@@ -4,7 +4,7 @@ define(['underscore'], function (_) {
     var deepCopy = function (o) {
         var copy;
         if(typeof o === 'object') {
-            copy = _.isArray(o) ? [] : {};
+            copy = _.isArray(o) || _.isArguments(o) ? [] : {};
             _.each(o, function (val, key) {
                 copy[key] = typeof val === 'object' ? deepCopy(val) : val;
             });
@@ -21,7 +21,7 @@ define(['underscore'], function (_) {
                 var args = deepCopy(arguments);
                 var ret = fn.apply(ctx, arguments);
                 _.each(aspects, function (aspect) {
-                    aspect(args, ret, ctx);
+                    aspect(deepCopy(args), ret, deepCopy(ctx));
                 });
                 return ret;
             };
