@@ -31,7 +31,7 @@
             done();
         },
 
-        testCustomSimple: function (test) {
+        testSimple: function (test) {
             assertionPackage(test, {
                 fn: defaultAspect(function (a) {
                     return a + this.three;
@@ -45,7 +45,7 @@
             test.done();
         },
 
-        testCustomFunctionDeepMutatesInput: function (test) {
+        testFunctionDeepMutatesInput: function (test) {
             assertionPackage(test, {
                 fn: defaultAspect(function (obj) {
                     obj.a += 1;
@@ -60,7 +60,7 @@
             test.done();
         },
 
-        testCustomAspectDeepMutatesInput: function (test) {
+        testAspectDeepMutatesInput: function (test) {
             var def = aspect({
                 a: function (input) {
                     input[0].a += 1;
@@ -77,7 +77,7 @@
             test.done();
         },
 
-        testCustomFunctionDeepMutatesContext: function (test) {
+        testFunctionDeepMutatesContext: function (test) {
             var def = aspect({
                 a: function (input, output, context) {
                     data = context;
@@ -93,7 +93,7 @@
             test.done();
         },
 
-        testCustomAspectDeepMutatesContext: function (test) {
+        testAspectDeepMutatesContext: function (test) {
             var def = aspect({
                 a: function (input, output, context) {
                     context.a += 1;
@@ -108,6 +108,26 @@
             }, { a: 1 })());
             test.strictEqual(fnThis.a, 1, 'functions this is unmutated');
             test.strictEqual(data.a, 1, 'next aspect\'s this is unmutated');
+            test.done();
+        },
+
+        testAspectDeepMutatesReturnValue: function (test) {
+            var def = aspect({
+                a: function (input, output, context) {
+                    output.a += 1;
+                },
+                b: function (input, output, context) {
+                    data = output;
+                }
+            });
+
+
+            (def(function () {
+                return { a: 1 };
+            })());
+
+            test.strictEqual(data.a, 1, 'output is unmutated');
+
             test.done();
         }
     };

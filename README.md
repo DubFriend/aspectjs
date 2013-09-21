@@ -14,7 +14,6 @@ var log = aspect({
         });
     };
 });
-
 ```
 and use to build new functions that automatically run the previously defined aspects.
 ```javascript

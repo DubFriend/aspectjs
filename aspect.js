@@ -21,7 +21,7 @@ define(['underscore'], function (_) {
                 var args = deepCopy(arguments);
                 var ret = fn.apply(ctx, arguments);
                 _.each(aspects, function (aspect) {
-                    aspect(deepCopy(args), ret, deepCopy(ctx));
+                    aspect(deepCopy(args), deepCopy(ret), deepCopy(ctx));
                 });
                 return ret;
             };
